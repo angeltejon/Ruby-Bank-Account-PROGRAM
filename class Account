@@ -15,8 +15,10 @@ class Account
   end
   
   def new_pin(pin_number)
+    @pin_broker = pin_broker
     if pin_number == pin
-      new_pin_number == Integer(gets.chomp)
+      print "please, introduce your new pin number: "
+      new_pin_number = Integer(gets.chomp)
         if new_pin_number.length == 4
           @pin == new_pin_number
           puts "You've changed your pin number to #{@pin}."
@@ -31,7 +33,7 @@ class Account
   public
   def display_balance(pin_number)
     if pin_number == pin
-      puts "Balance: $#{@balance}."
+      puts "#{@name}, your Balance is: $#{@balance}."
     else
       puts pin_error
     end
@@ -58,5 +60,13 @@ class Account
 end
 
 checking_account = Account.new("Emilio_Botin", 1_000_000_000)
+urban_guy = Account.new("El_Cholas", 1_200)
+rural_man = Account.new("Pepito", 4_330)
+folder_woman = Account.new("Janira", 18_000)
+
 checking_account.display_balance(1234)
-checking_account.new_pin(1234)
+urban_guy.display_balance(1234)
+rural_man.display_balance(1234)
+folder_woman.display_balance(1234)
+
+pin_broker.new_pin(1234)
